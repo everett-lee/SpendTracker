@@ -37,9 +37,15 @@ public class Menu {
             System.out.println("Please select an option 1-3: ");
             selection = inputter.getIntInput();
         }
-
         executeOption(selection);
-        System.out.println("\n Bye!");
+        selection = repeat();
+
+        if (selection == 2) {
+            listOptions();
+            selectOption();
+        } else {
+            System.out.println("\n Bye!");
+        }
     }
 
     public void executeOption(int selection) {
@@ -57,5 +63,16 @@ public class Menu {
                 System.out.println("Invalid option");
                 break;
         }
+    }
+
+    public int repeat() {
+        int selection = 0;
+
+        while (selection != 1 && selection != 2) {
+            System.out.println("Enter 1 to exit or 2 to return to the menu");
+            selection = inputter.getIntInput();
+        }
+
+        return selection;
     }
 }
